@@ -1,0 +1,8 @@
+[
+  {"driver": "Ramesh", "capacity": 4, "destination": "Delhi", "slot": "Morning"},
+  {"driver": "Suresh", "capacity": 2, "destination": "Delhi", "slot": "Morning"},
+  {"driver": "Anita", "capacity": 3, "destination": "Jaipur", "slot": "Evening"},
+  {"driver": "Vikram", "capacity": 1, "destination": "Delhi", "slot": "Night"},
+  {"driver": "Priya", "capacity": 4, "destination": "Jaipur", "slot": "Morning"},
+  {"driver": "Karan", "capacity": 2, "destination": "Jaipur", "slot": "Afternoon"}
+]
