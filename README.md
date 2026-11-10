@@ -1,19 +1,62 @@
-# Backend_SUTT_Task1
+# Cab Pool Matcher 
 
-# Models.py
-This file describes two data models used by the application:
-1.)Ride Request
-2.)Cab
-### 1.)Ride Request
-This file stores student information, including name, destination, preferred time slot, and academic year.
-It also records when a student submits a ride request.
-### 2.)Cab
-This file stores driver information, destination, time slot, and seating capacity.
-It maintains the list of assigned passengers and lastly, it
-tracks whether the cab has been dispatched.
+A Python-based terminal application built for SUTT Backend Recruitment Task 1.
 
-# Data JSON FILE CAB
-This file was used to accept the information from our original Ride Request class in Models.py in the form of a dictonary.
-We first create an object using our Models.py then send it to the Cab JSON file in the form of a dictionary; this makes sure our data doesn't get lost 
-When we close the Python program as it is stored in the JSON File.When we later upload those file contents back from_dict() reconstructs
-the student information when the application restarts.
+The project helps students find shared cabs travelling to Delhi or Jaipur. Students can choose a time slot (Morning, Afternoon, Evening, or Night), and the system matches them based on priority.
+
+Senior students get higher priority, while students from the same year are matched on a first-come-first-served basis.
+
+Features
+
+Add ride requests with student details, destination, and time slot.
+
+Priority-based matching using Python's heapq.
+
+Preview matches before dispatching a cab.
+
+Dispatch cabs even when they aren't completely full.
+
+View waiting students and cab availability.
+
+Save and restore data using JSON.
+
+Handle invalid inputs and missing or corrupted save files.
+
+Unit tests for the matching logic.
+
+How to Run
+
+### python main.py
+To run the tests:
+python -m unittest discover -s tests -v
+
+How Matching Works
+Each destination and time slot has its own priority queue.
+I used Python's heapq module to manage requests. Since it is a min-heap, I store the negative of the student's year so that senior students come first.
+Each request also gets a unique sequence number to maintain first-come-first-served ordering among students in the same year.
+(-request.year, request.sequence, request)
+The program also supports match previews. These use copies of the queues, so checking possible matches doesn't change the actual waiting list.
+When a cab is dispatched, the highest-priority students are assigned up to the cab's capacity.
+
+Saving Data
+
+I used JSON to save the application's state so that requests and cab details aren't lost when the program closes.
+
+data/cabs.json stores the initial cab configuration.
+
+data/state.json stores waiting requests, assigned passengers, and cab departure status.
+
+The program saves changes automatically and restores the previous state when restarted.
+
+Edge Cases Handled
+
+Partially filled cabs: A cab can depart without filling every seat.
+
+No available cabs: New requests can still be added to the waiting list.
+
+Same-year students: Requests are handled in submission order.
+
+Large queues: Heap operations keep matching efficient even with 1,000 requests.
+
+
+
