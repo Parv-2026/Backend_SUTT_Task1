@@ -1,4 +1,3 @@
-"""Priority-based matching and durable state management."""
 import heapq
 import json
 import os
