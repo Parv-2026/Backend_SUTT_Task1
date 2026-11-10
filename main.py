@@ -1,4 +1,3 @@
-"""Interactive terminal interface for Cab Pool Matcher."""
 from pathlib import Path
 from matcher import CabPoolMatcher
 from models import DESTINATIONS, SLOTS
