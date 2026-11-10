@@ -1,4 +1,3 @@
-"""Data models for the Cab Pool Matcher."""
 from dataclasses import dataclass, field
 
 DESTINATIONS = ('Delhi', 'Jaipur')
